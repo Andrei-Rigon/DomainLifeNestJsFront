@@ -1,0 +1,37 @@
+.day-view {
+  border-top: 1px solid var(--color-border);
+  padding: 20px;
+}
+
+.day-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.day-view-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.day-view-header .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.day-view-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.day-view-empty {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  padding: 24px 0;
+  text-align: center;
+}

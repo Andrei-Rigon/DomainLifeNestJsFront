@@ -1,0 +1,18 @@
+.note-color-picker {
+  display: flex;
+  gap: 10px;
+}
+
+.note-color-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.note-color-swatch--active {
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 2px var(--color-card-bg);
+}

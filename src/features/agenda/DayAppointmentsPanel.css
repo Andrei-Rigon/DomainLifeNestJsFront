@@ -1,0 +1,35 @@
+.day-panel {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 14px 8px;
+}
+
+.day-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 8px;
+}
+
+.day-panel-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.day-panel-count {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.day-panel-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.day-panel-list {
+  display: flex;
+  flex-direction: column;
+}

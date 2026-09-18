@@ -1,0 +1,40 @@
+.action-menu {
+  position: relative;
+}
+
+.action-menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.12);
+  min-width: 140px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.action-menu-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.action-menu-dropdown button:hover {
+  background: var(--color-bg);
+}
+
+.action-menu-dropdown .action-menu-danger {
+  color: var(--color-danger);
+}

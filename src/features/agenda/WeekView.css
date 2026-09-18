@@ -1,0 +1,103 @@
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid var(--color-border);
+  min-width: 700px;
+}
+
+.week-column {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--color-border);
+  min-height: 420px;
+}
+
+.week-grid .week-column:last-child {
+  border-right: none;
+}
+
+.week-column-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.week-column-weekday {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+.week-column-day {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.week-column-header--today .week-column-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.week-column-body {
+  flex: 1;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: default;
+}
+
+.week-column-empty {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.week-column-add {
+  border: none;
+  background: transparent;
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px;
+  cursor: pointer;
+  border-top: 1px solid var(--color-border);
+}
+
+.week-column-add:hover {
+  background: var(--color-bg);
+}
+
+.week-column .appointment-item {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 8px 8px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+.week-column .appointment-actions {
+  align-self: flex-end;
+  margin-top: -28px;
+}
+
+.week-column .appointment-time {
+  min-width: 0;
+}
