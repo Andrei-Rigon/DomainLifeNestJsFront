@@ -3,6 +3,7 @@ import { AppLayout } from './layout/AppLayout';
 import { DashboardPage } from './pages/DashboardPage';
 import { AgendaPage } from './features/agenda/AgendaPage';
 import { NotesPage } from './features/notes/NotesPage';
+import { ObjectivesPage } from './features/objectives/ObjectivesPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<DashboardPage />} />
           <Route path="agendamentos" element={<AgendaPage />} />
           <Route path="notas" element={<NotesPage />} />
+          <Route path="objetivos" element={<ObjectivesPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

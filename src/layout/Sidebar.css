@@ -47,6 +47,30 @@
   color: #ffffff;
 }
 
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.sidebar-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-sidebar-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sidebar-theme-toggle:hover {
+  background: var(--color-sidebar-hover);
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;

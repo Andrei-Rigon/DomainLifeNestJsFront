@@ -1,14 +1,19 @@
 import { NavLink } from 'react-router-dom';
-import { CalendarClock } from 'lucide-react';
+import { CalendarClock, Moon, Sun } from 'lucide-react';
 import { NAV_ITEMS } from './navItems';
+import type { Theme } from '../lib/theme';
 import './Sidebar.css';
 
 interface SidebarProps {
   isOpen: boolean;
   onNavigate: () => void;
+  theme: Theme;
+  onToggleTheme: () => void;
 }
 
-export function Sidebar({ isOpen, onNavigate }: SidebarProps) {
+export function Sidebar({ isOpen, onNavigate, theme, onToggleTheme }: SidebarProps) {
+  const isDark = theme === 'dark';
+
   return (
     <aside className={['sidebar', isOpen ? 'sidebar--open' : ''].filter(Boolean).join(' ')}>
       <div className="sidebar-brand">
@@ -32,6 +37,13 @@ export function Sidebar({ isOpen, onNavigate }: SidebarProps) {
           </NavLink>
         ))}
       </nav>
+
+      <div className="sidebar-footer">
+        <button type="button" className="sidebar-theme-toggle" onClick={onToggleTheme}>
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          <span>{isDark ? 'Modo claro' : 'Modo escuro'}</span>
+        </button>
+      </div>
     </aside>
   );
 }

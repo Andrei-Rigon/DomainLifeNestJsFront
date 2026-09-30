@@ -117,7 +117,7 @@ export function AppointmentFormModal({
             id="descricao"
             value={descricao}
             onChange={(event) => setDescricao(event.target.value)}
-            rows={3}
+            rows={6}
             placeholder="Observações sobre o agendamento"
           />
         </div>

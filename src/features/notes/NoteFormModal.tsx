@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState, type CSSProperties, type FormEvent } from 'react';
 import { Modal } from '../../components/Modal';
 import '../../components/forms.css';
 import { DEFAULT_NOTE_COLOR, NOTE_COLORS } from './noteColors';
@@ -58,7 +58,17 @@ export function NoteFormModal({ note, onClose, onSubmit }: NoteFormModalProps) {
         </>
       }
     >
-      <form id="note-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <form
+        id="note-form"
+        onSubmit={handleSubmit}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 14,
+          '--color-accent': cor,
+          '--color-accent-soft': `${cor}26`,
+        } as CSSProperties}
+      >
         {error && <div className="form-error">{error}</div>}
 
         <div className="field">
@@ -78,7 +88,7 @@ export function NoteFormModal({ note, onClose, onSubmit }: NoteFormModalProps) {
             id="descricao"
             value={descricao}
             onChange={(event) => setDescricao(event.target.value)}
-            rows={3}
+            rows={8}
             placeholder="Detalhes da nota"
           />
         </div>

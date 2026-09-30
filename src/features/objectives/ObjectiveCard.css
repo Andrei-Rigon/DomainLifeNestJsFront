@@ -1,0 +1,117 @@
+.objective-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.objective-card--done {
+  opacity: 0.75;
+}
+
+.objective-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.objective-card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.objective-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.objective-chip--category {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.objective-card-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.objective-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-strong);
+  background: transparent;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.objective-card--done .objective-check {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.objective-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.objective-card--done .objective-title {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.objective-description {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.objective-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 5px;
+}
+
+.objective-progress-percent {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.objective-progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.objective-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.objective-deadline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
