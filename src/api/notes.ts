@@ -5,6 +5,8 @@ export interface Note {
   titulo: string;
   descricao: string | null;
   cor: string | null;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface NotePayload {

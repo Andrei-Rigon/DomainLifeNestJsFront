@@ -43,6 +43,20 @@ export function useNotes() {
     [refresh],
   );
 
+  const updateOptimistic = useCallback(
+    async (id: number, payload: Partial<NotePayload>) => {
+      setNotes((current) => current.map((note) => (note.id === id ? { ...note, ...payload } : note)));
+      try {
+        await updateNote(id, payload);
+        refresh();
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Não foi possível salvar a alteração.');
+        refresh();
+      }
+    },
+    [refresh],
+  );
+
   const remove = useCallback(
     (id: number) =>
       deleteNote(id).then(() => {
@@ -51,5 +65,5 @@ export function useNotes() {
     [refresh],
   );
 
-  return { notes, loading, error, refresh, create, update, remove };
+  return { notes, loading, error, refresh, create, update, updateOptimistic, remove };
 }

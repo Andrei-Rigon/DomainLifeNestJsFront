@@ -1,9 +1,13 @@
-import { useState, type CSSProperties, type FormEvent } from 'react';
+import { lazy, Suspense, useState, type CSSProperties, type FormEvent } from 'react';
 import { Modal } from '../../components/Modal';
 import '../../components/forms.css';
 import { DEFAULT_NOTE_COLOR, NOTE_COLORS } from './noteColors';
 import type { Note, NotePayload } from '../../api/notes';
 import './NoteFormModal.css';
+
+const RichTextEditor = lazy(() =>
+  import('../../components/RichTextEditor').then((module) => ({ default: module.RichTextEditor })),
+);
 
 interface NoteFormModalProps {
   note?: Note;
@@ -83,14 +87,14 @@ export function NoteFormModal({ note, onClose, onSubmit }: NoteFormModalProps) {
         </div>
 
         <div className="field">
-          <label htmlFor="descricao">Descrição</label>
-          <textarea
-            id="descricao"
-            value={descricao}
-            onChange={(event) => setDescricao(event.target.value)}
-            rows={8}
-            placeholder="Detalhes da nota"
-          />
+          <label>Descrição</label>
+          <Suspense fallback={<div className="note-editor-loading">Carregando editor…</div>}>
+            <RichTextEditor
+              value={descricao}
+              onChange={setDescricao}
+              placeholder="Detalhes da nota. Selecione o texto para formatar."
+            />
+          </Suspense>
         </div>
 
         <div className="field">

@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
-import { Plus, Search } from 'lucide-react';
+import { LayoutGrid, Plus, Rows3, Search } from 'lucide-react';
 import { NoteCard } from './NoteCard';
 import { NoteFormModal } from './NoteFormModal';
 import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { useNotes } from './useNotes';
+import { useNotesViewMode } from './useNotesViewMode';
+import { toggleTaskInMarkdown } from '../../lib/markdownTasks';
 import type { Note } from '../../api/notes';
 import './NotesPage.css';
 
@@ -16,7 +18,8 @@ function matchesSearch(note: Note, search: string): boolean {
 }
 
 export function NotesPage() {
-  const { notes, error, create, update, remove } = useNotes();
+  const { notes, error, create, update, updateOptimistic, remove } = useNotes();
+  const { mode, setMode } = useNotesViewMode();
   const [search, setSearch] = useState('');
   const [formNote, setFormNote] = useState<Note | 'new' | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<Note | null>(null);
@@ -31,6 +34,14 @@ export function NotesPage() {
       await update(formNote.id, payload);
     } else {
       await create(payload);
+    }
+  }
+
+  function handleToggleTask(note: Note, taskIndex: number) {
+    if (!note.descricao) return;
+    const next = toggleTaskInMarkdown(note.descricao, taskIndex);
+    if (next !== note.descricao) {
+      void updateOptimistic(note.id, { descricao: next });
     }
   }
 
@@ -50,6 +61,23 @@ export function NotesPage() {
           />
         </label>
 
+        <div className="notes-view-toggle" role="group" aria-label="Estilo de visualização">
+          <button
+            type="button"
+            className={['notes-view-btn', mode === 'postit' ? 'notes-view-btn--active' : ''].filter(Boolean).join(' ')}
+            onClick={() => setMode('postit')}
+          >
+            <LayoutGrid size={15} /> Tipo 1
+          </button>
+          <button
+            type="button"
+            className={['notes-view-btn', mode === 'minimal' ? 'notes-view-btn--active' : ''].filter(Boolean).join(' ')}
+            onClick={() => setMode('minimal')}
+          >
+            <Rows3 size={15} /> Tipo 2
+          </button>
+        </div>
+
         <button type="button" className="btn btn-primary notes-new-btn" onClick={() => setFormNote('new')}>
           <Plus size={16} /> Nova nota
         </button>
@@ -57,13 +85,16 @@ export function NotesPage() {
 
       {error && <div className="notes-error">{error}</div>}
 
-      <div className="notes-grid">
+      <div className={`notes-grid notes-grid--${mode}`}>
         {filteredNotes.map((note) => (
           <NoteCard
             key={note.id}
             note={note}
+            variant={mode}
+            onAdd={() => setFormNote('new')}
             onEdit={() => setFormNote(note)}
             onDelete={() => setDeleteTarget(note)}
+            onToggleTask={(taskIndex) => handleToggleTask(note, taskIndex)}
           />
         ))}
 
