@@ -4,6 +4,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { AgendaPage } from './features/agenda/AgendaPage';
 import { NotesPage } from './features/notes/NotesPage';
 import { ObjectivesPage } from './features/objectives/ObjectivesPage';
+import { CountsPage } from './features/counts/CountsPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="agendamentos" element={<AgendaPage />} />
           <Route path="notas" element={<NotesPage />} />
           <Route path="objetivos" element={<ObjectivesPage />} />
+          <Route path="contas" element={<CountsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

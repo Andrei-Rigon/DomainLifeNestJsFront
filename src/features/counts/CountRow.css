@@ -1,0 +1,127 @@
+.counts-list-header,
+.count-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) 130px 130px 170px 90px 40px;
+  grid-template-areas: 'name type expected paid installments actions';
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.counts-list-header {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.count-row {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.count-row:last-child {
+  border-bottom: none;
+}
+
+.count-row:hover {
+  background: var(--color-bg);
+}
+
+.count-cell {
+  min-width: 0;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.count-cell--name {
+  grid-area: name;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.count-cell--type {
+  grid-area: type;
+}
+
+.count-cell--expected {
+  grid-area: expected;
+  font-weight: 600;
+}
+
+.count-cell--paid {
+  grid-area: paid;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.count-cell--installments {
+  grid-area: installments;
+  color: var(--color-text-muted);
+}
+
+.count-cell--actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.count-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.count-description {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.count-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.count-diff {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.count-diff--up {
+  color: var(--color-danger);
+}
+
+.count-diff--down {
+  color: #059669;
+}
+
+@media (max-width: 760px) {
+  .counts-list-header {
+    display: none;
+  }
+
+  .count-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) 40px;
+    grid-template-areas:
+      'name name name name actions'
+      'type expected paid installments .';
+    row-gap: 10px;
+    align-items: start;
+  }
+
+  .count-cell[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-bottom: 1px;
+  }
+}

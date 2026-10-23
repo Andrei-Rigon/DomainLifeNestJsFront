@@ -1,4 +1,4 @@
-import { CalendarDays, LayoutDashboard, StickyNote, Target, type LucideIcon } from 'lucide-react';
+import { CalendarDays, LayoutDashboard, StickyNote, Receipt, Target, type LucideIcon } from 'lucide-react';
 
 export interface NavItem {
   label: string;
@@ -11,4 +11,5 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Agendamentos', path: '/agendamentos', icon: CalendarDays },
   { label: 'Notas', path: '/notas', icon: StickyNote },
   { label: 'Objetivos', path: '/objetivos', icon: Target },
+  { label: 'Contas', path: '/contas', icon: Receipt },
 ];
